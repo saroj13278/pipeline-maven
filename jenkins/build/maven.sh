@@ -3,4 +3,6 @@ echo "******************************************"
 echo "***********Building***********************"
 echo "******************************************"
 
-docker run --rm -it -v $PWD/java-app:/app -v /root/.m2/:/root/.m2/ -w /app/ maven "$@"
+WORKSPACE=/var/lib/jenkins/workspace/maven-app
+
+docker run --rm -it -v $WORKSPACE/java-app:/app -v /root/.m2/:/root/.m2/ -w /app/ maven "$@"
