@@ -13,6 +13,13 @@ pipeline {
                     ./jenkins/build/build.sh
                     '''
             }
+                 post {
+                always {
+                    // Print the contents of the java-app and target directories for debugging
+                    sh 'ls -la /var/lib/jenkins/workspace/maven-app/java-app'
+                    sh 'ls -la /var/lib/jenkins/workspace/maven-app/java-app/target'
+                }
+            }
               post {
                 success {
                    archiveArtifacts artifacts: 'java-app/target/*.jar', fingerprint: true
