@@ -20,11 +20,6 @@ pipeline {
                     sh 'ls -la /var/lib/jenkins/workspace/maven-app/java-app/target'
                 }
             }
-              post {
-                success {
-                   archiveArtifacts artifacts: 'java-app/target/*.jar', fingerprint: true
-                }
-            }
      
         }
         stage('Test') {
